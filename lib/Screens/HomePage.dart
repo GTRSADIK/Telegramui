@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:telegram_ui_flutter/Models/Chart_Models.dart';
-import 'package:telegram_ui_flutter/Models/Drawer_Screen.dart';
+import '../Models/Chart_Models.dart';
+import '../Models/Drawer_Screen.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -12,58 +14,41 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Telegram'),
-        actions: <Widget>[
+        title: const Text('TeleChatGram'),
+        actions: const [
           Padding(
             padding: EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.search,
-            ),
+            child: Icon(Icons.search),
           ),
         ],
       ),
-      drawer: DrawerScreen(),
+      drawer: const DrawerScreen(),
       body: ListView.separated(
+        itemCount: items.length,
         itemBuilder: (ctx, i) {
           return ListTile(
             leading: CircleAvatar(
               radius: 28,
-              backgroundImage: NetworkImage(
-                items[i].profileUrl,
-              ),
+              backgroundImage: NetworkImage(items[i].profileUrl),
             ),
             title: Text(
               items[i].name,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: Text(
               items[i].message,
-              style: TextStyle(
-                fontWeight: FontWeight.normal,
-              ),
+              style: const TextStyle(fontWeight: FontWeight.normal),
             ),
-            trailing: Text(
-              items[i].time,
-            ),
+            trailing: Text(items[i].time),
           );
         },
-        separatorBuilder: (ctx, i) {
-          return Divider();
-        },
-        itemCount: items.length,
+        separatorBuilder: (ctx, i) => const Divider(),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.call,
-        ),
-        backgroundColor: Color(
-          0xFF65a9e0,
-        ),
         onPressed: () {},
+        backgroundColor: const Color(0xFF65a9e0),
+        child: const Icon(Icons.call),
       ),
     );
   }
 }
-//
