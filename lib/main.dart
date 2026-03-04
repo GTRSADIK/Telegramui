@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
-
 import 'Screens/HomePage.dart';
 
-void main() => runApp(new MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Telegram',
+      title: 'TelChatGram',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color(0xFF5682a3),
-        accentColor: Color(0xFFe7ebf8),
-        backgroundColor: Colors.white,
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF5682a3),
+          background: Colors.white,
+        ),
       ),
-      home: new HomePage(),
-      
+      home: const HomePage(),
     );
   }
 }
